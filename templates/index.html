@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admission Predictor</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        form { display: inline-block; text-align: left; }
+        input { margin: 5px; padding: 8px; width: 200px; }
+        button { padding: 10px; background-color: blue; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Admission Prediction</h2>
+    <form action="/predict" method="post">
+        <label>GRE Score (260 - 340):</label><br>
+        <input type="number" name="gre_score" min="260" max="340" required><br>
+
+        <label>TOEFL Score (0 - 120):</label><br>
+        <input type="number" name="toefl_score" min="0" max="120" required><br>
+
+        <label>University Rating (1 - 5):</label><br>
+        <input type="number" name="university_rating" min="1" max="5" required><br>
+
+        <label>SOP (1.0 - 5.0):</label><br>
+        <input type="number" name="sop" min="1.0" max="5.0" step="0.5" required><br>
+
+        <label>LOR (1.0 - 5.0):</label><br>
+        <input type="number" name="lor" min="1.0" max="5.0" step="0.5" required><br>
+
+        <label>CGPA (0.0 - 10.0):</label><br>
+        <input type="number" name="cgpa" min="0.0" max="10.0" step="0.01" required><br>
+
+        <label>Research (0 or 1):</label><br>
+        <input type="number" name="research" min="0" max="1" required><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
